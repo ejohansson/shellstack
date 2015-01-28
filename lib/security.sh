@@ -9,8 +9,8 @@ function set_basic_security {
 	install_fail2ban
 	install_ufw
 	basic_ufw_setup
-	sshd_permit_root_login No
-	sshd_password_authentication No
+	sshd_permit_root_login Yes
+	sshd_password_authentication Yes
 	sshd_pub_key_authentication Yes
 	/etc/init.d/ssh restart
 }

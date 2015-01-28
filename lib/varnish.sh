@@ -6,7 +6,12 @@
 
 function install_varnish {
   log "Installing varnish..."
-  aptitude install -y varnish
+  apt-get install apt-transport-https
+  curl https://repo.varnish-cache.org/ubuntu/GPG-key.txt | apt-key add -
+  echo "deb https://repo.varnish-cache.org/ubuntu/ precise varnish-4.0" >> /etc/apt/sources.list.d/varnish-cache.list
+  apt-get update
+  apt-get install -y varnish
+  #aptitude install -y varnish
   echo "apc.shm_size=100M" >> /etc/php5/fpm/conf.d/apc.ini
   /etc/init.d/varnish restart
   /etc/init.d/nginx restart
